@@ -1,0 +1,103 @@
+<div class="surface-ground px-4 py-3 md:px-6 lg:px-8">
+    <div class="text-900 font-bold text-3xl mb-4 text-center">
+        Compra de entradas de ingreso al parque
+    </div>
+    <div class="text-700 text-xl mb-3 text-center line-height-3">
+        Compre las entradas para su ingreso.
+    </div>
+
+    <div class="grid justify-content-center gap-4">
+        <!-- Tarjeta para entradas de Niños -->
+        <div class="col-12 lg:col-4">
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">Niños</div>
+                    <div class="text-600">Entradas para niños desde 1 a 13 años</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">3.50 Bs</span>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span class="text-900">Acceso al aire libre</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span class="text-900">Bancas disponibles</span>
+                        </li>
+                        <div class="flex flex-column gap-2 w-12rem">
+                            <label for="childTickets">Nro. Tickets a Comprar</label>
+                            <p-inputNumber
+                              styleClass="w-full"
+                              class="w-full"
+                              inputStyleClass="w-full"
+                              [(ngModel)]="numberOfChildTickets"
+                              [showButtons]="true"
+                              buttonLayout="horizontal"
+                              incrementButtonIcon="pi pi-plus"
+                              decrementButtonIcon="pi pi-minus"
+                              [min]="0"
+                              [max]="100"
+                              incrementButtonStyle="background-color: green; color: white;"
+                            />
+                        </div>
+                        <!-- Total individual para niños -->
+                        <div class="font-bold">Total: {{ numberOfChildTickets() * 3.50 }} Bs.</div>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
+                    <a routerLink="" class="p-button font-bold mt-4 no-underline">
+                        Comprar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para entradas de Adultos -->
+        <div class="col-12 lg:col-4">
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">Adultos</div>
+                    <div class="text-600">Entradas para mayores desde 14 años en adelante</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">5 Bs</span>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span class="text-900">Acceso al aire libre</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span class="text-900">Bancas disponibles</span>
+                        </li>
+                        <div class="flex flex-column gap-2 w-12rem">
+                            <label for="adultTickets">Nro. Tickets a Comprar</label>
+                            <p-inputNumber
+                              styleClass="w-full"
+                              class="w-full"
+                              inputStyleClass="w-full"
+                              [(ngModel)]="numberOfAdultTickets"
+                              [showButtons]="true"
+                              buttonLayout="horizontal"
+                              incrementButtonIcon="pi pi-plus"
+                              decrementButtonIcon="pi pi-minus"
+                              [min]="0"
+                              [max]="100"
+                            />
+                        </div>
+                        <!-- Total individual para adultos -->
+                        <div class="font-bold">Total: {{ numberOfAdultTickets() * 5.00 }} Bs.</div>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
+                    <a routerLink="" class="p-button font-bold mt-4 no-underline">
+                        Comprar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

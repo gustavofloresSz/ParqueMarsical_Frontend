@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule,RouterModule],
   template: `
     <div class="grid grid-nogutter surface-section text-800">
       <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center">
@@ -42,7 +43,7 @@ import { ButtonModule } from 'primeng/button';
               <p>2,400 a 2,950 m.s.n.m.</p>
             </div>
           </div>
-          <a routerLink="/" class="p-button font-bold mt-4">
+          <a routerLink="/main/ticket" class="p-button font-bold mt-4 no-underline">
             Comprar
           </a>
         </section>

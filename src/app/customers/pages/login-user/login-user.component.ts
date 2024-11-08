@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { UserService } from '../../services';
+import { AdminService } from '../../../administrator/services/admin.service';
 
 @Component({
   selector: 'app-login-user',
@@ -23,6 +24,7 @@ export class LoginUserComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private userService = inject(UserService);
+  private adminService = inject(AdminService); // Inyectar AdminService
 
   loginForm = this.fb.nonNullable.group({
     login: ['', Validators.required],
@@ -31,8 +33,19 @@ export class LoginUserComponent {
 
   login() {
     if (this.loginForm.invalid) return;
-    this.userService.login(this.loginForm.value).subscribe(() => {
-      this.router.navigateByUrl('/main');
-    });
+
+    const { login, password } = this.loginForm.value;
+
+    if (login === 'admin') {
+      this.adminService.login({ login, password }).subscribe(
+        () => this.router.navigateByUrl('/mainAdmin'),
+        (error) => console.error(error)
+      );
+    } else {
+      this.userService.login({ login, password }).subscribe(
+        () => this.router.navigateByUrl('/main'),
+        (error) => console.error(error)
+      );
+    }
   }
 }

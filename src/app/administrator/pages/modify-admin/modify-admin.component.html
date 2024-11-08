@@ -1,0 +1,67 @@
+<div class="p-m-3">
+    <p-toolbar class="mb-4">
+        <div class="p-toolbar-group-left">
+            <button pButton label="Añadir actividad" icon="pi pi-plus" class="p-button-success mr-2"></button>
+            <button pButton label="Delete" icon="pi pi-trash" class="p-button-danger"></button>
+        </div>
+    </p-toolbar>
+
+    <p-table [value]="[]" selectionMode="multiple" dataKey="id" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSelectableColumn></th>
+                <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="genre">Descripcion <p-sortIcon field="genre"></p-sortIcon></th>
+                <th pSortableColumn="releaseDate">Precio <p-sortIcon field="releaseDate"></p-sortIcon></th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td pSelectableColumn></td>
+                <td>{{ rowData.name || 'Sample Game Name' }}</td>
+                <td>{{ rowData.genre || 'Sample Genre' }}</td>
+                <td>{{ rowData.releaseDate || '2024-01-01' }}</td>
+                <td>
+                    <p-checkbox binary="true" [ngModel]="rowData.available"></p-checkbox>
+                </td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-primary mr-2"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">No games found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="Game Details" >
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="name">Name</label>
+                <input id="name" type="text" pInputText />
+            </div>
+            <div class="p-field">
+                <label for="genre">Genre</label>
+                <input id="genre" type="text" pInputText />
+            </div>
+            <div class="p-field">
+                <label for="releaseDate">Release Date</label>
+                <input id="releaseDate" type="date" pInputText />
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox id="available" binary="true"></p-checkbox>
+                <label for="available">Available</label>
+            </div>
+        </div>
+        <p-footer>
+            <button pButton label="Cancel" icon="pi pi-times" class="p-button-text"></button>
+            <button pButton label="Save" icon="pi pi-check" class="p-button-text"></button>
+        </p-footer>
+    </p-dialog>
+</div>

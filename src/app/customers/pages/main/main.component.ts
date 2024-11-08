@@ -24,6 +24,7 @@ export class MainComponent {
     {
       label: 'Entradas',
       icon: 'pi pi-receipt',
+      routerLink: 'ticket',
     },
     {
       label: 'Actividades / Juegos',
