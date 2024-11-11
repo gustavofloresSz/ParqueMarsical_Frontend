@@ -1,0 +1,63 @@
+<div class="surface-card p-4">
+  <h3 class="text-center">Elija Método de Pago</h3>
+  <div class="flex flex-column mt-4">
+    <label for="cantidadTickets">Nro. de entradas</label>
+    <p-inputNumber
+      [(ngModel)]="cantidad_ticket"
+      [showButtons]="true"
+      buttonLayout="horizontal"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      [min]="1"
+      [max]="100"
+      class="w-8rem"
+    ></p-inputNumber>
+  </div>
+
+  <div class="flex flex-column mt-4">
+    <label for="paymentMethod">Método de Pago</label>
+    <p-dropdown
+      [(ngModel)]="metodo_pago"
+      [options]="paymentMethods"
+      optionLabel="label"
+      placeholder="Seleccione un método"
+      class="w-10rem mt-2"
+    ></p-dropdown>
+  </div>
+
+  <div class="flex justify-content-center align-items-center mt-4">
+    <div *ngIf="metodo_pago === 'qr'" class="flex flex-column align-items-center text-center">
+      <img src="assets/img/qr.png" alt="QR Code" class="mt-3" style="max-width: 150px;" />
+    </div>
+
+    <div *ngIf="metodo_pago === 'tarjeta'" class="flex flex-column align-items-center text-center">
+      <input 
+        type="text" 
+        placeholder="Número de Tarjeta" 
+        [(ngModel)]="cardNumber" 
+        class="p-inputtext mt-2 w-full"
+      />
+      <input 
+        type="text" 
+        placeholder="Fecha de Expiración" 
+        [(ngModel)]="expiryDate" 
+        class="p-inputtext mt-2 w-full"
+      />
+    </div>
+  </div>
+
+  <!-- Botón Confirmar Compra -->
+  <div class="flex justify-content-center align-items-center mt-4">
+    <p-button 
+      label="Confirmar Compra" 
+      class="mt-3" 
+      (onClick)="confirmar_compra()" 
+      [disabled]="!metodo_pago || !cantidad_ticket"
+    ></p-button>
+  </div>
+  <div *ngIf="mensaje_compra" class="flex justify-content-center align-items-center mt-4">
+    <p class="text-center mt-3" style="color: green; font-weight: bold;">
+      ¡Gracias por su compra!
+    </p>
+  </div>
+</div>

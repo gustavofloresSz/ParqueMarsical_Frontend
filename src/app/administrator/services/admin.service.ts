@@ -15,14 +15,6 @@ export class AdminService {
   private apiUrl = environment.apiUrl; // Utiliza el apiUrl del environment
 
   constructor(private http: HttpClient) {}
-
-  get_admin() {
-    return this.http.get(`${this.apiUrl}/admin`);
-  }
-  add_admin(usuario: any) {
-    return this.http.post(`${this.apiUrl}/admin`, usuario);
-  }
-
   login(form: Object) {
     return this.http
       .post<{ token: string; fullname: string }>(`${this.apiUrl}/loginAdmin`, form)
@@ -34,16 +26,9 @@ export class AdminService {
     this.fullname.set(null);
     localStorage.removeItem('token');
   }
-
-  register(form: Object) {
-    return this.http
-      .post<{ token: string; fullname: string }>(
-        `${this.apiUrl}/register`,
-        form
-      )
-      .pipe(
-        tap(({ token, fullname }) => this._setAuthentication(token, fullname))
-      );
+  private _setAuthentication(token: string, fullname: string) {
+    this.fullname.set(fullname);
+    localStorage.setItem('token', token);
   }
 
   checkAuthStatus() {
@@ -63,21 +48,10 @@ export class AdminService {
       );
   }
 
+  //recuperar actividades para hacer el CRUD
   getActivities() {
-    return this.http
-      .get<activity[]>(`${this.apiUrl}/activities`)
-      .pipe(
-        map((resp) =>
-          resp.map(({ imagen, ...props }) => ({
-            ...props,
-            imagen: `assets/img/activities/${imagen}`,
-          }))
-        )
-      );
-  }
+    return this.http.get<activity[]>(`${this.apiUrl}/activities`)
 
-  private _setAuthentication(token: string, fullname: string) {
-    this.fullname.set(fullname);
-    localStorage.setItem('token', token);
   }
+  
 }

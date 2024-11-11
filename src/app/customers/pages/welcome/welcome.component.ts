@@ -46,6 +46,20 @@ import { ButtonModule } from 'primeng/button';
           <a routerLink="/main/ticket" class="p-button font-bold mt-4 no-underline">
             Comprar
           </a>
+          <div class="mt-4">
+            <strong>Nuestras redes sociales:</strong>
+              <a href="https://www.facebook.com/gamcochabamba/?locale=es_LA" target="_blank" class="ml-2">
+                <i class="pi pi-facebook" style="font-size: 24px;"></i>
+              </a>
+              <a href="https://www.instagram.com/gamcochabamba" target="_blank" class="ml-2">
+                <i class="pi pi-instagram" style="font-size: 24px;"></i>
+              </a>
+            <div class="mt-4">
+              <strong>
+                <i class="pi pi-phone"></i> Teléfono de referencia: 123-456-789
+              </strong>
+            </div>
+          </div>
         </section>
       </div>
       <div class="col-12 md:col-6 overflow-hidden">

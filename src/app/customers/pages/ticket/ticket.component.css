@@ -1,4 +1,3 @@
-::ng-deep .p-inputnumber-button.p-inputnumber-button-up {
-    background-color: green; /* Fondo del botón */
-    color: white; /* Color del símbolo + */
-}
+::ng-deep .p-input-number-button-up .pi-plus {
+    color: green; /* Cambia el color del símbolo + a verde */
+  }

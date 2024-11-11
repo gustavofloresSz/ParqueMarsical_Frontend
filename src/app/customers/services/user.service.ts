@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { throwError } from 'rxjs/internal/observable/throwError';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { activity } from '../interfaces/activity.interface';
 import { environment } from '../../../environments/environment';
 
@@ -79,5 +79,17 @@ export class UserService {
   private _setAuthentication(token: string, fullname: string) {
     this.fullname.set(fullname);
     localStorage.setItem('token', token);
+  }
+
+  // Método para registrar compra
+  registerPurchase(compraData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/compra`, compraData);
+  }
+
+  // Obtener el ID del cliente logueado
+  getLoggedInUserId(): number {
+    // Asegúrate de implementar esta lógica para obtener el ID desde el almacenamiento de sesión/local
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.id;
   }
 }

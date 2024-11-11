@@ -5,7 +5,6 @@ import { MainComponent } from './customers/pages/main/main.component';
 import { RegisterUserComponent } from './customers/pages/register-user/register-user.component';
 import { WelcomeComponent } from './customers/pages/welcome/welcome.component';
 import { MainAdminComponent } from './administrator/pages/main-admin/main-admin.component';
-import { LoginAdminComponent } from './administrator/pages/login-admin/login-admin.component';
 import { TicketComponent } from './customers/pages/ticket/ticket.component';
 import { ModifyAdminComponent } from './administrator/pages/modify-admin/modify-admin.component';
 
@@ -28,7 +27,6 @@ export const routes: Routes = [
     ],
   },
 
-  // { path: 'login-admin', component: LoginAdminComponent },
   //Admin rutas
   {path:"mainAdmin",component:MainAdminComponent,
     children:[
