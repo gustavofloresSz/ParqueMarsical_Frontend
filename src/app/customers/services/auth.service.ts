@@ -51,4 +51,25 @@ export class AuthService {
     localStorage.setItem('token', token);
     return true;
   }
+
+  // Obtener el ID del usuario logueado
+  getLoggedInUserId(): number | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    // Decodifica el token JWT
+    const payload = this.decodeJWT(token);
+    return payload ? payload.id : null;
+  }
+
+  private decodeJWT(token: string): any {
+    const payload = token.split('.')[1]; // Obtiene la parte del payload
+    if (!payload) return null;
+
+    const decodedPayload = atob(payload); // Decodifica de base64
+    return JSON.parse(decodedPayload); // Convierte a objeto
+  }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

@@ -25,6 +25,7 @@ export class MainAdminComponent  {
     {
       label: 'Generar Reportes',
       icon: 'pi pi-star-fill',
+      routerLink:'report'
       
     },
   ];

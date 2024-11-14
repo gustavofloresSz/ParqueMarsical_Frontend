@@ -7,6 +7,7 @@ import { WelcomeComponent } from './customers/pages/welcome/welcome.component';
 import { MainAdminComponent } from './administrator/pages/main-admin/main-admin.component';
 import { TicketComponent } from './customers/pages/ticket/ticket.component';
 import { ModifyAdminComponent } from './administrator/pages/modify-admin/modify-admin.component';
+import { ReportsAdminComponent } from './administrator/pages/reports-admin/reports-admin.component';
 
 export const routes: Routes = [
   // RUTAS User
@@ -31,7 +32,7 @@ export const routes: Routes = [
   {path:"mainAdmin",component:MainAdminComponent,
     children:[
       {path:'modify',component:ModifyAdminComponent},
-
+      {path:'report',component:ReportsAdminComponent}
     ]
   },
 

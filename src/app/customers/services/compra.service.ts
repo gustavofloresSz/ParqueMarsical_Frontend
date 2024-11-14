@@ -11,10 +11,31 @@ import { environment } from '../../../environments/environment';
 })
 export class CompraService {
   private readonly base_url = environment.apiUrl;
+  private compraActividadTemp: any[] = []; 
 
   constructor(private http: HttpClient) {}
 
+  //compra entrada parque
   compra(compraData: any): Observable<any> {
     return this.http.post(`${this.base_url}/compra`, compraData); // Asegúrate de que el backend reciba estos datos
+  }
+
+  //compra actividad
+  agregarActividadACarrito(compraActividadData: any) {
+    if (!this.compraActividadTemp.some(item => item.actividadId === compraActividadData.actividadId)) {
+      this.compraActividadTemp.push(compraActividadData);
+    }
+  }
+  quitarActividadDelCarrito(actividadId: number) {
+    this.compraActividadTemp = this.compraActividadTemp.filter(item => item.actividadId !== actividadId);
+  }
+  obtenerActividadesDelCarrito() {
+    return this.compraActividadTemp;
+  }
+  registrarCompraActividad(): Observable<any> {
+    return this.http.post(`${this.base_url}/compraActividad`, this.compraActividadTemp);
+  }
+  limpiarCarrito() {
+    this.compraActividadTemp = [];
   }
 }

@@ -86,10 +86,8 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/compra`, compraData);
   }
 
-  // Obtener el ID del cliente logueado
-  getLoggedInUserId(): number {
-    // Asegúrate de implementar esta lógica para obtener el ID desde el almacenamiento de sesión/local
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.id;
+  getClientesByFecha(fecha: string): Observable<any> {
+    const formattedDate = new Date(fecha).toISOString().split('T')[0]; // Formatea a 'YYYY-MM-DD'
+    return this.http.get(`${this.apiUrl}/fecha_clientes`, { params: { fecha: formattedDate } });
   }
 }

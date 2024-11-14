@@ -12,6 +12,7 @@ import { UserService } from '../../services';
 import { activity } from '../../interfaces/activity.interface';
 import { DialogService } from 'primeng/dynamicdialog';
 import { BuyTicketDialogComponent } from './buy-ticket-dialog/buy-ticket-dialog.component';
+import { CompraService } from '../../services/compra.service';
 
 @Component({
   selector: 'app-activities',
@@ -24,8 +25,10 @@ export class ActivitiesComponent implements OnInit {
   activities = signal<activity[]>([]);
   constructor(
     private userService: UserService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private compraService: CompraService
   ) {}
+  mensaje_compra: boolean = false;
 
   ngOnInit() {
     this.getData();
@@ -43,5 +46,20 @@ export class ActivitiesComponent implements OnInit {
       width: '40rem',
       data: activity,
     });
+  }
+  realizarCompra() {
+    this.compraService.registrarCompraActividad().subscribe(
+      (response) => {
+        console.log('Compra realizada con éxito', response);
+        this.compraService.limpiarCarrito();
+      },
+      (error) => {
+        console.error('Error al realizar la compra', error);
+      }
+    );
+    this.mensaje_compra = true;
+    setTimeout(() => {
+      this.mensaje_compra = false;
+    }, 4000);
   }
 }

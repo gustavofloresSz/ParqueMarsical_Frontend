@@ -1,4 +1,3 @@
-// src/app/components/buy-entrada-dialog/buy-entrada-dialog.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +21,8 @@ export class BuyEntradaDialogComponent {
   cardNumber: string = '';
   expiryDate: string = '';
   mensaje_compra: boolean = false;
-  paymentMethods = [
+  esta_logueado: boolean =false;
+  metodoDePago = [
     { label: 'QR', value: 'Qr' },
     { label: 'Tarjeta', value: 'Tarjeta' }
   ];
@@ -31,9 +31,10 @@ export class BuyEntradaDialogComponent {
     public config: DynamicDialogConfig,
     public ref: DynamicDialogRef,
     private compraService: CompraService,
-    private authService: AuthService // Inyectar el servicio Auth
+    private authService: AuthService
   ) {
-    this.ticketType = this.config.data.ticketType;  // Obtienes el tipo de ticket (niño o adulto)
+    this.ticketType = this.config.data.ticketType; // Obtienes el tipo de ticket (niño o adulto)
+    this.esta_logueado = this.authService.isLoggedIn();
   }
 
   get cantidad_ticket(): number {
@@ -44,20 +45,21 @@ export class BuyEntradaDialogComponent {
     this._cantitadEntradas = value;
   }
 
-  // Método para confirmar la compra
   confirmar_compra() {
     if (!this.metodo_pago) {
       console.error('Debe seleccionar un método de pago');
       return;
     }
-  
-    // Prepara los datos para enviar al backend
+
+    const entradaId = this.ticketType === 'nino' ? 1 : 2; // 1 para niño, 2 para adulto
+    const cliente_id = this.authService.getLoggedInUserId();
     const compraData = {
-      metodo_pago: this.metodo_pago.value,  
-      cliente_id: 1, // Asegúrate de obtener el cliente_id de la sesión
-      cantidad: this.cantidad_ticket, 
+      metodo_pago: this.metodo_pago.value,
+      cliente_id: cliente_id,
+      cantidad: this.cantidad_ticket,
+      entradaId: entradaId
     };
-  
+
     this.compraService.compra(compraData).subscribe(
       (response: any) => {
         console.log('Compra registrada exitosamente:', response);
@@ -67,6 +69,7 @@ export class BuyEntradaDialogComponent {
         console.error('Error al registrar la compra', error);
       }
     );
+    
     this.mensaje_compra = true;
     setTimeout(() => {
       this.mensaje_compra = false;
