@@ -23,10 +23,31 @@ export class MainAdminComponent  {
       routerLink: 'modify',
     },
     {
-      label: 'Generar Reportes',
-      icon: 'pi pi-star-fill',
-      routerLink:'report'
-      
-    },
+      label: 'Reportes',
+      icon: 'pi pi-address-book',
+      items:[
+        {
+          label: 'Clientes nuevos',
+          icon: 'pi pi-ticket',
+          routerLink:'report'
+        },
+        {
+          label: 'Entradas/Actividaes vendidas',
+          icon: 'pi pi-shopping-bag',
+          routerLink:'entradasReport'
+        },
+        {
+          label: 'Ingresos generados Entradas/Actividades',
+          icon: 'pi pi-dollar',
+          routerLink:'income'
+        },
+        {
+          label: 'Juego/Actividad mas comprado',
+          icon: 'pi pi-table',
+          routerLink:'bestCompra'
+        },
+
+      ]
+    },   
   ];
 }

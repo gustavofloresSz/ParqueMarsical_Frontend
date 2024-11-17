@@ -1,0 +1,92 @@
+<div class="entradas-report-container p-card">
+  <h2>Reporte de Entradas y Actividades Vendidas</h2>
+  
+  <div class="p-field flex p-jc-between p-ai-center">
+    <div class="flex column-gap-4 p-2 p-ai-center">
+      <p-floatLabel>
+        <p-calendar
+          [(ngModel)]="fechaInicio"
+          id="fechaInicio"
+          [showIcon]="true"
+        ></p-calendar>
+        <label for="fechaInicio">Fecha Inicio:</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-calendar
+          [(ngModel)]="fechaFin"
+          id="fechaFin"
+          [showIcon]="true"
+        ></p-calendar>
+        <label for="fechaFin">Fecha Fin:</label>
+      </p-floatLabel>
+    </div>
+  </div>
+
+  <div class="card flex flex-wrap gap-3 align-items-center p-2">
+    <button
+      pButton
+      type="button"
+      label="Buscar Entradas"
+      icon="pi pi-search"
+      class="p-button-primary p-button-sm"
+      (click)="generarReporteEntradas()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Buscar Actividades"
+      icon="pi pi-search"
+      class="p-button-secondary p-button-sm p-ml-3"
+      (click)="generarReporteActividades()"
+    ></button>
+  </div>
+
+  <div *ngIf="entradasVendidas.length === 0 && actividadesVendidas.length === 0" class="p-message p-message-info p-mt-4">
+    <span>No se encontraron entradas ni actividades para estas fechas.</span>
+  </div>
+
+  <div *ngIf="entradasVendidas.length > 0" class="p-mt-4">
+    <h3>Entradas Vendidas</h3>
+    <p-table [value]="entradasVendidas">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Tipo de entrada</th>
+          <th>Nombre del Cliente</th>
+          <th>CI del Cliente</th>
+          <th>Cantidad Comprada</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-entrada>
+        <tr>
+          <td>{{ entrada.descripcion }}</td>
+          <td>{{ entrada.nombreCliente }}</td>
+          <td>{{ entrada.ciCliente }}</td>
+          <td>{{ entrada.cantidad }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div *ngIf="actividadesVendidas.length > 0" class="p-mt-4">
+    <h3>Actividades Vendidas</h3>
+    <p-table [value]="actividadesVendidas">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre de la Actividad</th>
+          <th>Nombre del Cliente</th>
+          <th>CI del Cliente</th>
+          <th>Cantidad Comprada</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-actividad>
+        <tr>
+          <td>{{ actividad.nombreActividad }}</td>
+          <td>{{ actividad.nombreCliente }}</td>
+          <td>{{ actividad.ciCliente }}</td>
+          <td>{{ actividad.cantidad }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

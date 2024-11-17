@@ -2,10 +2,15 @@
 body {
   margin: 0px;
 }
-
-/* para login e inicio de sesion */
+.transparent-menubar {
+  background-color: transparent !important;
+  /*background-color:rgba(0, 0, 0, 0.2) !important;*/
+  border: none !important;
+  box-shadow: none !important; /* Para quitar cualquier sombra */
+  z-index: 1;
+}
 .gradient-background {
-  background-image: url('assets/img/fondopuro1.jpg');
+  background-image: url('assets/img/fondopuro1.png');
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -15,3 +20,70 @@ body {
   height: 100%;
   z-index: -1;
 }
+.gradient-background1 {
+  background-image: url('assets/img/fondoini.png');
+  background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+  background-position: center; /* Centra el fondo */
+  background-attachment: fixed; /* Fija el fondo para que no se mueva al hacer scroll */
+  position: fixed; /* Fija la posición para que siempre ocupe toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% del ancho de la ventana */
+  height: 100vh; /* 100% de la altura de la ventana */
+  z-index: -1; /* Se coloca detrás del contenido */
+}
+.custom-style {
+  background: rgba(255, 255, 255, 0.2) !important; /* Forzar fondo transparente */
+  backdrop-filter: blur(10px) !important;          /* Forzar desenfoque */
+  color: rgb(0, 0, 0) !important;                         /* Forzar letras blancas */
+}
+.blurred-background {
+  
+  background-color: rgba(255, 255, 255, 0.8); /* Semitransparente pero sin blur */
+  filter: none; /* Asegúrate de que no haya blur */
+  /*border-radius: 8px;                 /* Mantener bordes redondeados */
+  transition: all 0.3s ease-in-out;   /* Transición suave */
+}
+.border-round {
+  border-radius: 10px;
+}
+.transparent-menubar .p-menuitem-link:hover {
+  background-color: rgba(0,0, 0, 0.3) !important; /* Fondo translúcido al pasar el mouse */
+  transition: background-color 0.3s ease, color 0.3s ease !important; /* Animación suave */
+  border-radius: 0.5rem !important; /* Bordes redondeados opcionales */
+  color: rgba(0, 0, 0, 0.959) !important; /* Cambiar el color del texto al pasar el mouse */
+}
+
+/* Si quieres cambiar el color del texto en estado normal */
+.transparent-menubar .p-menuitem-link {
+  color: rgba(0, 0, 0, 0.904); /* Color por defecto */
+}
+
+/* Estilo para el ítem seleccionado, opcional */
+.transparent-menubar .p-menuitem-link.router-link-active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+/* Asegúrate de que estos estilos se apliquen correctamente */
+.custom-container {
+  display: flex; /* Para alinear los elementos en fila */
+  justify-content: space-between; /* Asegura que los elementos estén distribuidos */
+  gap: 20px; /* Espacio de 1 cm entre los elementos */
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-right: 60px;
+}
+
+.custom-container > div {
+  flex: 1; /* Ambos divs ocuparán espacio igual */
+  background: rgba(0, 0, 0, 0.6) !important; /* Fondo para los elementos */
+  border-radius: 0.5rem;
+  padding: 20px;
+}
+
+.custom-container > div:nth-child(2) {
+  margin-left: 20px; /* Si necesitas un pequeño margen a la izquierda del segundo div */
+}
+.transparent-background {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+

@@ -7,7 +7,10 @@ import { WelcomeComponent } from './customers/pages/welcome/welcome.component';
 import { MainAdminComponent } from './administrator/pages/main-admin/main-admin.component';
 import { TicketComponent } from './customers/pages/ticket/ticket.component';
 import { ModifyAdminComponent } from './administrator/pages/modify-admin/modify-admin.component';
-import { ReportsAdminComponent } from './administrator/pages/reports-admin/reports-admin.component';
+import { ReportsAdminComponent } from './administrator/pages/users-reports/users-report.component';
+import { EntradasReportComponent } from './administrator/pages/entradas-actividades-report/entradas-actividades-report.component';
+import { IncomeReportComponent } from './administrator/pages/income-report/income-report.component';
+import { BestCompraReportComponent } from './administrator/pages/best-compra-report/best-compra-report.component';
 
 export const routes: Routes = [
   // RUTAS User
@@ -32,7 +35,10 @@ export const routes: Routes = [
   {path:"mainAdmin",component:MainAdminComponent,
     children:[
       {path:'modify',component:ModifyAdminComponent},
-      {path:'report',component:ReportsAdminComponent}
+      {path:'report',component:ReportsAdminComponent},
+      {path:'entradasReport',component:EntradasReportComponent},
+      {path:'income',component:IncomeReportComponent},
+      {path:'bestCompra',component:BestCompraReportComponent}
     ]
   },
 

@@ -1,0 +1,58 @@
+<div class="reports-container p-card">
+  <h2>Reporte de Usuarios Creados</h2>
+  
+  <div class="p-field flex p-jc-between p-ai-center">
+    <div class="flex column-gap-4 p-2 p-ai-center">
+      <p-floatLabel>
+        <p-calendar
+          [(ngModel)]="fechaInicio"
+          id="fechaInicio"
+          [showIcon]="true">
+        </p-calendar>
+        <label for="fechaInicio">Fecha Inicio:</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-calendar
+          [(ngModel)]="fechaFin"
+          id="fechaFin"
+          [showIcon]="true">
+        </p-calendar>
+        <label for="fechaFin">Fecha Fin:</label>
+      </p-floatLabel>
+    </div>
+  </div>
+
+  <div class="card flex flex-wrap gap-3 align-items-center p-2">
+    <button 
+      pButton 
+      type="button" 
+      label="Buscar" 
+      icon="pi pi-search" 
+      class="p-button-primary p-button-sm" 
+      (click)="buscarClientesPorFecha()">
+    </button>
+  </div>
+  
+
+  <p-table [value]="clientes" *ngIf="clientes.length > 0" class="p-mt-3">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>CI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha de Creación</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cliente>
+      <tr>
+        <td>{{ cliente.ci }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellido }}</td>
+        <td>{{ cliente.fecha_creacion | date: 'short' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+  <p-message *ngIf="clientes.length === 0" severity="info" text="No se encontraron usuarios para esta fecha." class="p-mt-3"></p-message>
+</div>

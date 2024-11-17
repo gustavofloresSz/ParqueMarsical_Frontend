@@ -86,8 +86,10 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/compra`, compraData);
   }
 
-  getClientesByFecha(fecha: string): Observable<any> {
-    const formattedDate = new Date(fecha).toISOString().split('T')[0]; // Formatea a 'YYYY-MM-DD'
-    return this.http.get(`${this.apiUrl}/fecha_clientes`, { params: { fecha: formattedDate } });
+  getClientesByFecha(fechaInicio: string, fechaFin: string): Observable<any> {
+    const fechaInicioFormatted = new Date(fechaInicio).toISOString().split('T')[0];
+    const fechaFinFormatted = new Date(fechaFin).toISOString().split('T')[0];
+    
+    return this.http.get<any>(`${this.apiUrl}/fecha_clientes?fechaInicio=${fechaInicioFormatted}&fechaFin=${fechaFinFormatted}`);
   }
 }

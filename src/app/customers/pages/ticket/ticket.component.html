@@ -1,8 +1,12 @@
-<div class="surface-ground px-4 py-3 md:px-6 lg:px-8">
-  <div class="text-900 font-bold text-3xl mb-4 text-center">
-    Compra de entradas de ingreso al parque
+<div class="surface-ground px-4 py-3 md:px-6 lg:px-8" style="background: rgba(0, 0, 0, 0.5) !important; border-radius: 0.5rem;padding:20px;color: white;!important">
+  <div class="text-900 font-bold text-3xl mb-4 text-center" style="color: white;!important" >
+    <div style="color: white;">
+      <div class="text-900" style="color: white;">
+        Compra de entradas de ingreso al parque
+      </div>
+    </div>
   </div>
-  <div class="text-700 text-xl mb-3 text-center line-height-3">
+  <div class="text-700 text-xl mb-3 text-center line-height-3" style="color: white;!important">
     Compre las entradas para su ingreso.
   </div>
 
@@ -10,12 +14,12 @@
     <!-- Tarjeta para entradas de Niños -->
     <div class="col-12 lg:col-4">
       <div class="p-3 h-full">
-        <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
-          <div class="text-900 font-medium text-xl mb-2">Niños</div>
-          <div class="text-600">Entradas para niños desde 1 a 13 años</div>
+        <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px;background: rgba(0, 0, 0, 0.5) !important; border-radius: 0.5rem;padding:20px;">
+          <div class="text-900 font-medium text-xl mb-2" style="color: white;!important">Niños</div>
+          <div class="text-600" style="color: white;">Entradas para niños desde 1 a 13 años</div>
           <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
           <div class="flex align-items-center">
-            <span class="font-bold text-2xl text-900">3.50 Bs</span>
+            <span class="font-bold text-2xl text-900" style="color: white;">3.50 Bs</span>
           </div>
           <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
           <ul class="list-none p-0 m-0 flex-grow-1">
@@ -29,7 +33,7 @@
             </li>
           </ul>
           <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
-          <a (click)="abrir_dialog('nino')" class="p-button font-bold mt-4 no-underline">
+          <a (click)="abrir_dialog('nino')" class="p-button font-bold mt-4 no-underline custom-button" >
             Comprar
           </a>
         </div>
@@ -39,7 +43,7 @@
     <!-- Tarjeta para entradas de Adultos -->
     <div class="col-12 lg:col-4">
       <div class="p-3 h-full">
-        <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
+        <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px;background: rgba(0, 0, 0, 0.5) !important; border-radius: 0.5rem;padding:20px;">
           <div class="text-900 font-medium text-xl mb-2">Adultos</div>
           <div class="text-600">Entradas para mayores desde 14 años en adelante</div>
           <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
@@ -58,7 +62,7 @@
             </li>
           </ul>
           <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
-          <a (click)="abrir_dialog('adulto')" class="p-button font-bold mt-4 no-underline">
+          <a (click)="abrir_dialog('adulto')" class="p-button font-bold mt-4 no-underline custom-button" >
             Comprar
           </a>
         </div>
@@ -66,3 +70,41 @@
     </div>
   </div>
 </div>
+<style>
+  .text-900,
+  .text-700,
+  .text-600,
+  .surface-ground {
+    color: white !important;
+  }
+
+  .p-button {
+    background-color: #608020 !important;
+    color: white !important;
+  }
+
+  .custom-button {
+    background-color: #608020 !important; /* Tono de verde */
+    color: white !important; 
+    padding: 10px 15px; 
+    text-align: center; 
+    display: inline-block; 
+    border-radius: 5px; 
+    text-decoration: none; /* Sin subrayado */
+    border: none; /* Sin borde extra */
+  }
+
+  .custom-button:hover {
+    background-color: #507015 !important; /* Oscurecer el tono de verde en hover */
+    cursor: pointer; /* Cambiar el cursor a una mano */
+  }
+
+  .custom-button:focus {
+    outline: none; /* Eliminar margen azul al enfocar */
+    box-shadow: none; /* Eliminar sombra del foco */
+  }
+
+  .custom-button:active {
+    background-color: #405810 !important; /* Cambiar a un verde más oscuro al presionar */
+  }
+</style>

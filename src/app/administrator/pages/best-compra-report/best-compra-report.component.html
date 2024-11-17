@@ -1,0 +1,59 @@
+<div class="best-compra-report-container p-card">
+    <h2>Reporte de las Actividad Más Vendidas</h2>
+
+    <div class="p-field flex p-jc-between p-ai-center">
+        <div class="flex column-gap-4 p-2 p-ai-center">
+            <p-floatLabel>
+                <p-calendar 
+                    [(ngModel)]="fechaInicio" 
+                    id="fechaInicio" 
+                    [showIcon]="true">
+                </p-calendar>
+                <label for="fechaInicio">Fecha de Inicio:</label>
+            </p-floatLabel>
+        </div>
+        <div class="flex column-gap-4 p-2 p-ai-center">
+            <p-floatLabel>
+                <p-calendar 
+                    [(ngModel)]="fechaFin" 
+                    id="fechaFin"
+                    [showIcon]="true">
+                </p-calendar>
+                <label for="fechaFin">Fecha de Fin:</label>
+            </p-floatLabel>
+        </div>
+    </div>
+
+    <div class="card flex flex-wrap gap-3 align-items-center p-2">
+        <button 
+            pButton 
+            type="button" 
+            label="Buscar" 
+            icon="pi pi-search" 
+            class="p-button-primary p-button-sm" 
+            (click)="generarReporteActividad()">
+        </button>
+    </div>
+
+    <div *ngIf="actividades.length > 0" class="p-mt-4">
+        <h3>Actividades Vendidas Mayor a Menor:</h3>
+        <p-table [value]="actividades">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre de la Actividad</th>
+                    <th>Cantidad de Entradas</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-actividad>
+                <tr>
+                    <td>{{ actividad.nombre }}</td>
+                    <td>{{ actividad.cantidad }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    
+    <div *ngIf="actividades.length === 0" class="p-message p-message-info p-mt-4">
+        <span>No se encontraron actividades vendidas para estas fechas.</span>
+    </div>
+</div>

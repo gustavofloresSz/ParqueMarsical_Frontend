@@ -1,0 +1,93 @@
+<div class="income-report-container p-card">
+  <h2>Reporte de Ganancias por Entradas y Actividades</h2>
+
+  <div class="p-field flex p-jc-between p-ai-center">
+    <div class="flex column-gap-4 p-2 p-ai-center">
+      <p-floatLabel>
+        <p-calendar 
+            [(ngModel)]="fechaInicio"
+            id="fechaInicio" 
+            [showIcon]="true" />
+        <label>Fecha Inicio</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-calendar 
+            [(ngModel)]="fechaFin"
+            id="fechaFin" 
+            [showIcon]="true" />
+        <label>Fecha Fin</label>
+      </p-floatLabel>
+    </div>
+  </div>
+
+  <!-- Botones de reporte -->
+  <div class="card flex flex-wrap gap-3 align-items-center p-2">
+    <button
+        pButton
+        type="button"
+        label="Buscar por Entradas"
+        icon="pi pi-search"
+        class="p-button-primary p-button-sm"
+        (click)="generarReporteGanancias()"
+    ></button>
+    <button
+        pButton
+        type="button"
+        label="Buscar por Actividades"
+        icon="pi pi-search"
+        class="p-button-secondary p-button-sm p-ml-3"
+        (click)="generarReporteActividades()"
+    ></button>
+  </div>
+
+  <div *ngIf="totalGanancias !== null && mostrarGananciasEntradas" class="p-mt-4">
+    <h3>Total de Ganancias por Entradas: Bs {{ totalGanancias }}</h3>
+  </div>
+  <div *ngIf="totalGananciasActivities !== null && mostrarGananciasActividades" class="p-mt-4">
+    <h3>Total de Ganancias por Actividades: Bs {{ totalGananciasActivities }}</h3>
+  </div>
+  <div *ngIf="totalGanancias === null && totalGananciasActivities === null" class="p-message p-message-info p-mt-4">
+    <span>No se encontraron ganancias para estas fechas.</span>
+  </div>
+
+  <div *ngIf="gananciasPorEntrada.length > 0 && mostrarGananciasEntradas" class="p-mt-4">
+    <h3>Ganancias por Tipo de Entrada</h3>
+    <p-table [value]="gananciasPorEntrada">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Tipo de entrada</th>
+          <th>Cantidad</th>
+          <th>Ingreso</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-gain>
+        <tr>
+          <td>{{ gain.descripcion }}</td>
+          <td>{{ gain.cantidad }}</td>
+          <td>Bs {{ gain.ingreso }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div *ngIf="gananciasPorActividad.length > 0 && mostrarGananciasActividades" class="p-mt-4">
+    <h3>Ganancias por Actividades</h3>
+    <p-table [value]="gananciasPorActividad">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre de Actividad</th>
+          <th>Cantidad</th>
+          <th>Ingreso</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-gain>
+        <tr>
+          <td>{{ gain.nombre }}</td>
+          <td>{{ gain.cantidad }}</td>
+          <td>Bs {{ gain.ingreso }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
