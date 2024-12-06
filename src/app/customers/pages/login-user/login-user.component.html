@@ -4,16 +4,16 @@
   <div class="gradient-background"></div>
   <div
     class="p-4 shadow-4 border-round w-11 lg:w-28rem fadeinup animation-duration-500" 
-    style="background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px);"
+    style="background: rgba(255,255,255,0.3); backdrop-filter: blur(10px);"
   >
     <div class="text-center mb-5">
       <div class="text-900 text-3xl font-medium mb-3">Inicio de Sesion</div>
-      <span class="text-600 font-medium line-height-3">
+      <span class="text-600 font-medium line-height-3" style="color: black;">
         Venta de entradas: Parque Mariscal Santa Cruz
       </span>
     </div>
     <div>
-      <form
+      <form 
         [formGroup]="loginForm"
         (submit)="login()"
         autocomplete="off"
@@ -22,7 +22,7 @@
         <label for="email1" class="block text-900 font-medium mb-2"
           >Numero de CI o Usuario</label
         >
-        <input
+        <input 
           id="email1"
           type="text"
           placeholder="Ingrese su CI"
@@ -34,7 +34,7 @@
         <label for="password1" class="block text-900 font-medium mb-2"
           >Contraseña</label
         >
-        <input
+        <input 
           id="password1"
           type="password"
           placeholder="Ingrese su contraseña"
@@ -44,11 +44,13 @@
         />
       </form>
       <div class="py-3">
-        <span class="text-600 font-medium line-height-3">
+        <span class="text-600 font-medium line-height-3" style="color: black;">
           ¿No tienes una cuenta?
         </span>
         <a
           class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+          style="color:#334215 !important;"
+          styleClass="custom-button"
           routerLink="/register-user"
         >
           Crear
@@ -59,6 +61,7 @@
         pButton
         label="Ingresar"
         class="w-full"
+        style="background-color: #4a631a;"
         (click)="login()"
       ></button>
     </div>

@@ -26,9 +26,27 @@ export class RegisterUserComponent {
   private userService = inject(UserService);
 
   formUser = this.fb.nonNullable.group({
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
-    ci: ['', Validators.required],
+    nombre: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/), // Letras y espacios
+      ],
+    ],
+    apellido: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/), // Letras y espacios
+      ],
+    ],
+    ci: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/^\d{1,8}$/), // Solo números, hasta 8 dígitos
+      ],
+    ],
     password: ['', Validators.required],
   });
 
@@ -38,5 +56,19 @@ export class RegisterUserComponent {
     this.userService.register(this.formUser.value).subscribe(() => {
       this.router.navigateByUrl('/main');
     });
+  }
+
+  validateLetterInput(event: KeyboardEvent) {
+    const charCode = event.key;
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]$/.test(charCode)) {
+      event.preventDefault();
+    }
+  }
+
+  validateNumberInput(event: KeyboardEvent) {
+    const charCode = event.key;
+    if (!/^\d$/.test(charCode)) {
+      event.preventDefault();
+    }
   }
 }

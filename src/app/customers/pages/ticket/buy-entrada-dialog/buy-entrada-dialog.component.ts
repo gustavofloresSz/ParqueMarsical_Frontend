@@ -18,8 +18,6 @@ export class BuyEntradaDialogComponent {
   private _cantitadEntradas = 1;
   ticketType: 'nino' | 'adulto';
   metodo_pago: any ='';
-  cardNumber: string = '';
-  expiryDate: string = '';
   mensaje_compra: boolean = false;
   esta_logueado: boolean =false;
   metodoDePago = [

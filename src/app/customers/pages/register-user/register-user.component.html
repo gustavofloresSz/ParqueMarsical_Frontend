@@ -22,24 +22,47 @@
           pInputText
           class="w-full mb-3"
           formControlName="nombre"
+          (keypress)="validateLetterInput($event)"
         />
-        <label class="block text-900 font-medium mb-2"> Apellidos </label>
+        <div
+          *ngIf="formUser.get('nombre')?.invalid && formUser.get('nombre')?.touched"
+          class="text-red-600 text-sm"
+        >
+          Este campo solo puede contener letras.
+        </div>
+        <label class="block text-900 font-medium mb-2">Apellidos</label>
         <input
-          type="apellido"
+          type="text"
           placeholder="Ingrese sus apellidos"
           pInputText
           class="w-full mb-4"
           formControlName="apellido"
+          (keypress)="validateLetterInput($event)"
         />
+        <div
+          *ngIf="formUser.get('apellido')?.invalid && formUser.get('apellido')?.touched"
+          class="text-red-600 text-sm"
+        >
+          Este campo solo puede contener letras.
+        </div>
         <label class="block text-900 font-medium mb-2"> CI </label>
         <input
           id="ci"
-          type="ci"
+          type="text"
           placeholder="Ingrese su CI"
           pInputText
           class="w-full mb-4"
           formControlName="ci"
+          maxlength="8"
+          (keypress)="validateNumberInput($event)"
         />
+        <div
+          *ngIf="formUser.get('ci')?.invalid && formUser.get('ci')?.touched"
+          class="text-red-600 text-sm"
+        >
+          El CI debe contener solo números y tener máximo 8 dígitos.
+        </div>
+
         <label class="block text-900 font-medium mb-2"> Password </label>
         <p-password
           styleClass="w-full"

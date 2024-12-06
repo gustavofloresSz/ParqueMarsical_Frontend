@@ -1,0 +1,99 @@
+/* Asegúrate de que las tarjetas sean completamente transparentes */
+.surface-card, .custom-card {
+    background-color: transparent !important; /* Fondo transparente */
+    color: rgb(0, 0, 0) !important; /* Texto blanco */
+    border: none !important; /* Elimina cualquier borde */
+    box-shadow: none !important; /* Elimina cualquier sombra */
+}
+.custom-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el fondo */
+}
+
+.custom-card:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Cambia el fondo al pasar el mouse */
+}
+.custom-grid {
+    background-color: rgba(0, 0, 0, 0.089);
+    color: rgb(255, 255, 255);
+    color-scheme: #608020; /* Este estilo puede no tener efecto en todos los navegadores */
+}
+
+/* Asegúrate de que este CSS esté en tu archivo de estilos global o en el CSS del componente */
+/* Asegúrate de que este CSS esté en tu archivo de estilos global o en el CSS del componente */
+.p-dataview-content {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Ajusta el valor de opacidad según sea necesario */
+    color: rgb(255, 255, 255) !important; /* Cambia el color del texto para que sea legible */
+}
+::ng-deep .p-dataview-content .p-button {
+    background-color: #608020 !important; /* Fondo verde para botones dentro de DataView */
+    color: white !important;
+}
+::ng-deep .p-button.custom-button {
+    background-color: #608020 !important; /* Fondo verde */
+    color: white !important; /* Texto blanco */
+}
+
+::ng-deep .p-button {
+    background-color: transparent !important; /* Fondo transparente */
+    box-shadow: none !important; /* Sin sombras */
+}
+
+/* Si hay otras clases que afectan el fondo, asegúrate de incluirlas */
+.p-dataview {
+    background-color: transparent !important; /* Para asegurarte de que el fondo sea transparente */
+}
+/* Contenedor principal de DataView */
+::ng-deep .p-dataview .p-dataview-grid {
+    background-color: transparent !important; /* Fondo transparente */
+    color: white !important; /* Texto blanco */
+}
+
+/* Contenedores internos */
+::ng-deep .p-dataview .p-dataview-grid .p-component {
+    background-color: transparent !important; /* Fondo transparente interno */
+    color: inherit !important; /* Hereda el color del contenedor */
+    border: none !important; /* Sin bordes internos */
+}
+.template-grid {
+    background-color: rgba(0, 0, 0, 0.479);
+}
+
+::ng-deep .surface-50 {
+    background: transparent !important; /* Fondo completamente transparente */
+}
+.surface-50 {
+    background-color: rgba(245, 238, 238, 0.123) !important; /* Asegúrate de que el fondo sea blanco */
+    color: black; /* Cambia el color del texto si es necesario */
+}
+.custom-success-message {
+    background-color: #608020 !important; /* Fondo semitransparente */
+    color: rgb(0, 0, 0) !important; /* Color del texto blanco */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+}
+.custom-button {
+    background-color: #608020 !important; /* Fondo verde */
+    color: white !important; /* Texto blanco */
+    border: none !important; /* Sin bordes */
+    border-radius: 4px !important; /* Bordes redondeados */
+    box-shadow: none !important; /* Sin sombras */
+}
+
+.custom-button:hover {
+    background-color: #608020 !important; /* Verde más 
+    oscuro al pasar el mouse */
+    color: aliceblue !important;
+}
+.flex .flex-column .gap-4 .mt-4 .custom-button{
+    background-color: #608020 !important;
+    color: aliceblue !important;
+}
+.flex .flex-column .custom-button {
+    background-color: #608020 !important; /* Color por defecto */
+    color: aliceblue !important;
+}
+::ng-deep .custom-dropdown .p-dropdown-label.p-placeholder {
+    color: white !important; /* Fuerza el color blanco */
+}

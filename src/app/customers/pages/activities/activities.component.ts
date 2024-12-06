@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { DataViewModule } from 'primeng/dataview';
@@ -19,7 +20,9 @@ import { CompraService } from '../../services/compra.service';
   standalone: true,
   imports: [CommonModule, DataViewModule, ButtonModule],
   templateUrl: './activities.component.html',
+  styleUrls:['./activities.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation:ViewEncapsulation.None
 })
 export class ActivitiesComponent implements OnInit {
   activities = signal<activity[]>([]);
@@ -61,5 +64,8 @@ export class ActivitiesComponent implements OnInit {
     setTimeout(() => {
       this.mensaje_compra = false;
     }, 4000);
+  }
+  trackByIndex(index: number, item: any): number {
+    return index;  // Usamos el índice para identificar de forma única los elementos
   }
 }

@@ -33,29 +33,7 @@
         placeholder="Seleccione un método"
         class="w-10rem mt-2"
       ></p-dropdown>
-    </div>
-
-    <div class="flex justify-content-center align-items-center mt-4">
-      <div *ngIf="metodo_pago === 'qr'" class="flex flex-column align-items-center text-center">
-        <img src="assets/img/qr.png" alt="QR Code" class="mt-3" style="max-width: 150px;" />
-      </div>
-
-      <div *ngIf="metodo_pago === 'tarjeta'" class="flex flex-column align-items-center text-center">
-        <input 
-          type="text" 
-          placeholder="Número de Tarjeta" 
-          [(ngModel)]="cardNumber" 
-          class="p-inputtext mt-2 w-full"
-        />
-        <input 
-          type="text" 
-          placeholder="Fecha de Expiración" 
-          [(ngModel)]="expiryDate" 
-          class="p-inputtext mt-2 w-full"
-        />
-      </div>
-    </div>
-    
+    </div>    
     <div class="flex justify-content-center align-items-center mt-4">
       <p-button 
         label="Confirmar Compra" 

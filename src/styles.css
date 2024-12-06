@@ -10,7 +10,7 @@ body {
   z-index: 1;
 }
 .gradient-background {
-  background-image: url('assets/img/fondopuro1.png');
+  background-image: url('assets/img/login.jpg');
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -38,7 +38,6 @@ body {
   color: rgb(0, 0, 0) !important;                         /* Forzar letras blancas */
 }
 .blurred-background {
-  
   background-color: rgba(255, 255, 255, 0.8); /* Semitransparente pero sin blur */
   filter: none; /* Asegúrate de que no haya blur */
   /*border-radius: 8px;                 /* Mantener bordes redondeados */
@@ -83,7 +82,19 @@ body {
 .custom-container > div:nth-child(2) {
   margin-left: 20px; /* Si necesitas un pequeño margen a la izquierda del segundo div */
 }
+.iframe-container {
+  width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+  height: 250px; /* Ajusta la altura según sea necesario */
+  overflow: hidden; /* Oculta cualquier desbordamiento */
+  border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* Estilo para el iframe */
+.iframe-container iframe {
+  width: 100%; /* Asegúrate de que el iframe ocupe todo el ancho del contenedor */
+  height: 100%; /* Asegúrate de que el iframe ocupe toda la altura del contenedor */
+  border: none; /* Elimina el borde del iframe */
+}
 .transparent-background {
   background: rgba(255, 255, 255, 0.6) !important;
 }
-

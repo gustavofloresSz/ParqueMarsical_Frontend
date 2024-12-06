@@ -1,0 +1,8 @@
+
+.custom-button {
+    background-color: #608020 !important; /* Fondo verde */
+    color: white !important; /* Texto blanco */
+    border: none !important; /* Sin bordes */
+    border-radius: 4px !important; /* Bordes redondeados */
+    box-shadow: none !important; /* Sin sombras */
+}

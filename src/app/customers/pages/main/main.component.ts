@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
-import { FloatLabel } from 'primeng/floatlabel';
 import { ProfileComponent } from '../../components/profile/profile.component';
 import { MenuItem } from 'primeng/api';
+import { EmotionService } from '../../services/emotion.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-main',
   standalone: true,
@@ -11,15 +13,22 @@ import { MenuItem } from 'primeng/api';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent {
+  constructor(private emotionService: EmotionService, private router: Router) {}
+
+  onOpinionsClick() {
+    console.log('Respuesta del servidor:');
+    this.emotionService.startRecognition().subscribe(() => {
+    });
+  }
+
   routes: MenuItem[] = [
     {
       label: 'Parque Mariscal',
     },
     {
-      label: 'Bievenido',
+      label: 'Bienvenido',
       icon: 'pi pi-home',
       routerLink: 'welcome',
-
     },
     {
       label: 'Entradas',
@@ -30,6 +39,14 @@ export class MainComponent {
       label: 'Actividades / Juegos',
       icon: 'pi pi-star-fill',
       routerLink: 'activities',
+    },
+    {
+      label: 'Opiniones',
+      icon: 'pi pi-envelope',
+      routerLink: 'comments',
+      command: () => {
+        this.onOpinionsClick();
+      },
     },
   ];
 }

@@ -1,7 +1,7 @@
-<div class="surface-card">
-  <div *ngIf="!esta_logueado" class="text-center mt-2">
+<div class="surface-card" style="background: transparent; color: rgba(255, 255, 255, 0.055);">
+  <div *ngIf="!esta_logueado" class="text-center mt-2" style="background: transparent; color: rgba(5, 5, 5, 0.959);" >
     <p>Debe iniciar sesión o crear una cuenta para realizar la compra.</p>
-    <button (click)="ref.close()" class="p-button">Cerrar</button>
+    <button (click)="ref.close()" class="p-button custom-button">Cerrar</button>
   </div>
 
   <div *ngIf="esta_logueado">
@@ -37,13 +37,13 @@
       <div class="font-bold">Total: {{ amountToPay() }} Bs.</div>
     </div>
     <div class="flex flex-column mt-4">
-      <label for="paymentMethod">Método de Pago</label>
+      <label for="paymentMethod" style="color: black;">Método de Pago</label>
       <p-dropdown
         [(ngModel)]="metodo_pago"
         [options]="metodoDePago"
         optionLabel="label"
         placeholder="Seleccione un método"
-        class="w-10rem mt-2"
+        class="w-10rem mt-2 custom-dropdown"
       ></p-dropdown>
     </div>
     <div class="flex justify-content-end flex-wrap">
@@ -51,6 +51,7 @@
         [label]="isInCart ? 'Quitar del carrito' : 'Agregar al carrito'"
         [disabled]="!metodo_pago || !cantidad_ticket"
         (onClick)="agregarAlCarrito()"
+        styleClass="custom-button"
       />
     </div>
   </div>

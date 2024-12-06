@@ -1,0 +1,63 @@
+<div class="container" style="color: white">
+  <!-- Título de la actividad actual -->
+  <h3 class="text-center">{{ activities[imagenActual].nombre }}</h3>
+
+  <!-- Imagen de la actividad -->
+  <div class="image-container p-mb-4">
+    <img
+      [src]="activities[imagenActual].imagen"
+      alt="Actividad"
+      class="activity-image p-shadow-3 p-border-round"
+    />
+  </div>
+
+  <!-- Botones de navegación -->
+  <div class="navigation-buttons flex justify-content-center gap-3">
+    <p-button
+      icon="pi pi-arrow-left"
+      label="Anterior"
+      class="p-button-rounded p-button-outlined"
+      (onClick)="anterior()"
+    ></p-button>
+
+    <p-button
+      icon="pi pi-arrow-right"
+      label="Siguiente"
+      class="p-button-rounded p-button-outlined"
+      (onClick)="siguiente()"
+    ></p-button>
+  </div>
+
+  <!-- Sección de comentarios -->
+  <div class="comments-section flex align-items-end justify-content-start mt-4">
+    <div class="comments-container" style="color: white">
+      <h4>Comente su experiencia en el parque</h4>
+      
+      <!-- Caja de texto para comentarios -->
+      <div class="card flex justify-content-center">
+        <textarea 
+          rows="5"
+          cols="30"
+          pInputTextarea
+          placeholder="Escriba aquí su comentario..."
+          [(ngModel)]="userComment">
+        </textarea>
+      </div>
+      
+      <!-- Botón para enviar comentario -->
+      <p-button
+        label="Enviar Comentario"
+        icon="pi pi-send"
+        class="p-mt-3"
+        (onClick)="submitComment()"
+      ></p-button>
+      
+      <!-- Mensaje de agradecimiento -->
+      <div *ngIf="mensajeComentario" class="flex justify-content-center align-items-center mt-4">
+        <p class="text-center mt-3" style="color: white; font-weight: bold;">
+          ¡Gracias por su comentario!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

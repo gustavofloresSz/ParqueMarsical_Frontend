@@ -11,6 +11,7 @@ import { ReportsAdminComponent } from './administrator/pages/users-reports/users
 import { EntradasReportComponent } from './administrator/pages/entradas-actividades-report/entradas-actividades-report.component';
 import { IncomeReportComponent } from './administrator/pages/income-report/income-report.component';
 import { BestCompraReportComponent } from './administrator/pages/best-compra-report/best-compra-report.component';
+import { CommentsComponent } from './customers/pages/comments/comments.component';
 
 export const routes: Routes = [
   // RUTAS User
@@ -23,6 +24,7 @@ export const routes: Routes = [
       {path:'ticket',component:TicketComponent},
       { path: 'activities', component: ActivitiesComponent },
       { path: 'welcome', component: WelcomeComponent },
+      {path: 'comments',component:CommentsComponent},
       {
         path: '',
         redirectTo: 'welcome',
